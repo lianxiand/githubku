@@ -36,3 +36,43 @@ int main()
 	cout << "Sorry,no match"<<endl;
 	return 0;
 }
+
+
+
+使用函数指针参数调用函数示例：
+#include <iostream>
+using namespace std;
+#include <cmath>
+typedef double funType( double );
+funType circlePerimeter;
+funType circleArea;
+funType ballArea;
+funType ballVolume;
+double callFun(funType*,double);
+int main()
+{ double r;
+ cout << "enter the radius: ";
+ cin >> r;
+ cout << "the perimeter of circle is: " << callFun(circlePerimeter,r) << endl;
+ cout << "the area of circle is: " << callFun(circleArea,r) << endl;
+ cout << "enter the radius of a ball: ";
+ cin >> r;
+ cout << "the area of the ball is: " << callFun(ballArea,r) << endl;
+ cout << "the volume of the ball is: "<< callFun(ballVolume,r) << endl; 
+}
+const double pi = 3.14159;
+double callFun(funType*qf,double r)
+{return qf(r);
+}
+double circlePerimeter(double radius)
+{return 2*pi*radius;
+}
+double circleArea(double radius)
+{return pi*radius*radius;
+}
+double ballArea(double radius)
+{return 4*pi*radius*radius;
+}
+double ballVolume(double radius)
+{return 4.0/3*pi*pow(radius,3);
+}
