@@ -76,3 +76,38 @@ double ballArea(double radius)
 double ballVolume(double radius)
 {return 4.0/3*pi*pow(radius,3);
 }
+
+现在遇到了问题；
+我需要使用c++来编写代码，计算PI的值；
+如下所示；
+但是当输出到第九个数字的时候，就会出现数据紊乱，明显的不对，但是我不知道应该如何去修改；
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+int f1(int n)
+{if(n == 0)
+{
+return 1;}
+else {int result =1;
+
+for (int i=n+1;i<=2*n;++i)
+{
+  result *=i;}
+ return result;
+}}//n的阶乘 
+int f2(int m)
+{if (m == 0)
+{  return 1;}
+  else if (m >= 1)
+{ return m*f2(m-1);}
+}//n+1累乘到2n 
+int main()
+{long double s=0.0,PIS = 0.0;
+for (int n=1;n <= 10;++n)
+{
+  s=pow(2,2*n)*f2(n)/pow(n,0.5)/f1(n);
+  PIS = pow (s,2);
+ cout << "n = " <<setw(3) << n << ",\tPI = " << fixed << setprecision(10) << PIS <<endl;}
+ return 0;
+}
