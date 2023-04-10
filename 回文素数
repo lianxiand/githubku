@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+bool prime(int n) 
+{if (n <= 1)
+        return false;
+    int x = sqrt(n);
+    for (int i = 2; i <= x; i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+bool palindrome(int n) {
+    int m = n, s = 0;
+    while (m > 0) {
+        s = s * 10 + m % 10;
+        m /= 10;
+    }
+    return s == n;
+}
+int main() {
+    int count = 0, n = 2;
+    cout << "前100个回文素数为：" << endl;
+    while (count < 100) {
+        if (prime(n) && palindrome(n)) {
+            cout << n << "\t";
+            count++;
+            if (count % 10 == 0)
+                cout << endl;
+        }
+        n++;
+    }
+    return 0;
+}
